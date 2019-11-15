@@ -34,8 +34,19 @@ namespace Adatbáziskezelés
 
                 Console.WriteLine("Darab: " + db);
 
+                Console.WriteLine("Mekkora macskakő?");
+                string usermeterstr = Console.ReadLine();
+                int usermeret;
+                if (!int.TryParse
+                    (usermeterstr,out usermeret))
+                {
+                    Console.WriteLine("Ervenytelen meret");
+                    return;
+                }
+                
                 var lekerdezescmd = conn.CreateCommand();
-                lekerdezescmd.CommandText = @"SELECT id, nev, meret FROM macskak";
+                lekerdezescmd.CommandText = @"SELECT id, nev, meret FROM macskak
+                                            WHERE meret>=@meret";
 
                 using (var reader= lekerdezescmd.ExecuteReader())
                 {
