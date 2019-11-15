@@ -10,6 +10,9 @@ namespace Adatbáziskezelés
     {
         static void Main(string[] args)
         {
+
+
+
         }
     }
 }
